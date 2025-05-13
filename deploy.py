@@ -89,9 +89,9 @@ class TurnoverClassifier:
         if self.model is None:
             return "❌ Model belum dilatih atau file tidak ditemukan."
     
-    input_array = np.array(input_data).reshape(1, -1)
-    prediction = self.model.predict(input_array)
-    return "Yes" if prediction[0] == 1 else "No"
+        input_array = np.array(input_data).reshape(1, -1)
+        prediction = self.model.predict(input_array)
+        return "Yes" if prediction[0] == 1 else "No"
 # Streamlit App
 def main():
     st.title("💼 Employee Turnover Prediction App")
