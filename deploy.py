@@ -92,7 +92,6 @@ class TurnoverClassifier:
     input_array = np.array(input_data).reshape(1, -1)
     prediction = self.model.predict(input_array)
     return "Yes" if prediction[0] == 1 else "No"
-
 # Streamlit App
 def main():
     st.title("💼 Employee Turnover Prediction App")
