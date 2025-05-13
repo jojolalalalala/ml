@@ -46,6 +46,8 @@ class TurnoverClassifier:
 
     def train_model(self):
         self.load_data()
+        st.write("🧾 Kolom pada dataset:", self.df.columns.tolist())
+        st.write("🎯 Kolom yang diminta model:", self.feature_names)
         if self.df is None:
             st.error("Dataset tidak ditemukan. Pastikan file 'turnover_data.csv' tersedia.")
             return
