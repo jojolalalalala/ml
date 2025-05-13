@@ -84,10 +84,10 @@ class TurnoverClassifier:
             self.model = None
 
     def predict(self, input_data):
-    if self.model is None:
-        self.load_model()
-    if self.model is None:
-        return "❌ Model belum dilatih atau file tidak ditemukan."
+        if self.model is None:
+            self.load_model()
+        if self.model is None:
+            return "❌ Model belum dilatih atau file tidak ditemukan."
     
     input_array = np.array(input_data).reshape(1, -1)
     prediction = self.model.predict(input_array)
