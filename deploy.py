@@ -18,8 +18,8 @@ from sklearn.preprocessing import LabelEncoder
 
 class TurnoverClassifier:
     def __init__(self):
-        self.columns = [
-            'Age', 'Gender', 'MaritalStatus', 'Travelling', 'Vertical', 'Qualification', 'EducationField', 'EmployeSatisfaction',
+        self.feature_names = [
+            'Age', 'Gender', 'MaritalStatus', 'Travelling', 'Vertical', 'Qualifications', 'EducationField', 'EmployeSatisfaction',
             'JobEngagement', 'JobLevel', 'JobSatisfaction', 'Role', 'DailyBilling', 'HourBilling', 'MonthlyBilling', 'MonthlyRate',
             'Work Experience', 'OverTime', 'PercentSalaryHike', 'Last Rating', 'RelationshipSatisfaction', 'Hours', 'StockOptionLevel',
             'TrainingTimesLastYear', 'Work&Life', 'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion', 'YearsWithCurrentManager',
