@@ -31,7 +31,7 @@ class TurnoverClassifier:
 
     def load_data(self):
         try:
-            self.df = pd.read_csv('/content/ideaspiceemployeeturnoverdatset.csv')
+            self.df = pd.read_csv('ideaspiceemployeeturnoverdataset.csv')
         except FileNotFoundError:
             self.df = None
 
