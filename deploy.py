@@ -84,13 +84,20 @@ class TurnoverClassifier:
             self.model = None
 
     def predict(self, input_data):
-        if self.model is None:
-            self.load_model()
-        if self.model is None:
-            return "❌ Model belum dilatih atau file tidak ditemukan."
-        input_array = np.array(input_data).reshape(1, -1)
-        prediction = self.model.predict(input_array)
-        return "Yes" if prediction[0] == 1 else "No"
+    if self.model is None:
+        self.load_model()
+    if self.model is None:
+        return "❌ Model belum dilatih atau file tidak ditemukan."
+    
+    # Encode input data using the saved label encoders
+    for i, col in enumerate(self.columns):
+        if col in self.label_encoders:
+            input_data[i] = self.label_encoders[col].transform([input_data[i]])[0]
+
+    input_array = np.array(input_data).reshape(1, -1)
+    prediction = self.model.predict(input_array)
+    return "Yes" if prediction[0] == 1 else "No"
+
 
 # Streamlit App
 def main():
