@@ -78,25 +78,26 @@ class TurnoverClassifier:
             self.model = None
 
     def predict(self, input_data):
-        if self.model is None:
-            self.load_model()
-        if self.model is None:
-            return "❌ Model belum dilatih atau file tidak ditemukan."
+    if self.model is None:
+        self.load_model()
+    if self.model is None:
+        return "❌ Model belum dilatih atau file tidak ditemukan."
 
-        # Convert input_data ke DataFrame
-        input_df = pd.DataFrame([input_data], columns=self.feature_names)
+    # input_data sekarang dictionary, jadi bentuk langsung ke DataFrame
+    input_df = pd.DataFrame([input_data])  # auto pakai key sebagai kolom
 
-        # Encode kolom yang perlu encoding
-        for col in input_df.columns:
-            if col in self.label_encoders:
-                le = self.label_encoders[col]
-                try:
-                    input_df[col] = le.transform(input_df[col])
-                except ValueError:
-                    return f"❌ Nilai input tidak dikenali untuk kolom '{col}': {input_df[col].values[0]}"
+    # Encode kolom yang perlu encoding
+    for col in input_df.columns:
+        if col in self.label_encoders:
+            le = self.label_encoders[col]
+            try:
+                input_df[col] = le.transform(input_df[col])
+            except ValueError:
+                return f"❌ Nilai input tidak dikenali untuk kolom '{col}': {input_df[col].values[0]}"
 
-        prediction = self.model.predict(input_df.values)
-        return "Yes" if prediction[0] == 1 else "No"
+    prediction = self.model.predict(input_df.values)
+    return "Yes" if prediction[0] == 1 else "No"
+
 
 # Streamlit App
 def main():
