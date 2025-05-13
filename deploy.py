@@ -136,7 +136,7 @@ def main():
         last_rating = st.slider("Last Performance Rating", 1, 5, 3)
         rel_satisfaction = st.slider("Relationship Satisfaction", 1, 5, 3)
         hours = st.slider("Working Hours", 40, 80, 60)
-        stock_option = st.selectbox("Stock Option Level", 0, 10, 5)
+        stock_option = st.selectbox("Stock Option Level", list(range(0, 11)), index=5)
         training = st.slider("Training Times Last Year", 0, 10, 3)
         work_life = st.slider("Work-Life Balance", 1, 4, 3)
         years_at_company = st.slider("Years At Company", 0, 40, 5)
