@@ -25,6 +25,7 @@ class TurnoverClassifier:
             'TrainingTimesLastYear', 'Work&Life', 'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion', 'YearsWithCurrentManager',
             'DistanceFromHome',
         ]
+        self.feature_names = self.columns
         self.model = None
         self.df = None
         self.label_encoders = {}
@@ -151,8 +152,6 @@ def main():
         if st.button("Predict"):
             result = classifier.predict(input_data)
             st.success(f"Prediction: The employee is likely to leave? **{result}**")
-
-
+            
 if __name__ == "__main__":
     main()
-
